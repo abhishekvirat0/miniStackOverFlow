@@ -9,8 +9,10 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import os.path
 from pathlib import Path
+
+from django.contrib import staticfiles
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +26,7 @@ SECRET_KEY = 'django-insecure-6c!a&+53k11czg+^d@w1s7-*gw71l^18imy056$dd747)%g@$(
 # SECURITY WARNING: debug turned off in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*', '', 'localhost']
+ALLOWED_HOSTS = ['*', 'https://ministackoverflow-gdfe.onrender.com', 'localhost']
 
 # OAuth2 client credentials
 OAUTH2_CLIENT_ID = "Q0hvMw2Mk7uv5U4q8LMIOiK9Jo7SpJeXuFbXzaUW"
@@ -74,7 +76,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'oauth2_provider.middleware.OAuth2TokenMiddleware'
+    'oauth2_provider.middleware.OAuth2TokenMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 OAUTH2_PROVIDER = {
@@ -161,8 +164,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
-
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
