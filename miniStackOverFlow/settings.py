@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6c!a&+53k11czg+^d@w1s7-*gw71l^18imy056$dd747)%g@$('
 
 # SECURITY WARNING: debug turned off in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*', 'https://ministackoverflow-gdfe.onrender.com', 'localhost']
 
