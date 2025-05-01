@@ -124,7 +124,7 @@ WSGI_APPLICATION = 'miniStackOverFlow.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
+CORS_ALLOW_ALL_ORIGINS = True
 # In case of Production
 if os.getenv("RENDER") == "true":
     DATABASES = {
