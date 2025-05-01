@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a5c3abd-99fe-4c9a-b41c-69e4dfea0536" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/miniStackOverFlow/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/miniStackOverFlow/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +121,7 @@
       <workItem from="1745619126213" duration="21167000" />
       <workItem from="1745759729874" duration="8268000" />
       <workItem from="1745795158357" duration="6590000" />
-      <workItem from="1745829056637" duration="30096000" />
+      <workItem from="1745829056637" duration="30519000" />
     </task>
     <servers />
   </component>
