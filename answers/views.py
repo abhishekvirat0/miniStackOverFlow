@@ -1,6 +1,7 @@
 from django.core.mail import send_mail
 from rest_framework import viewsets, permissions, status
 from rest_framework.decorators import action
+from rest_framework.exceptions import PermissionDenied
 from rest_framework.response import Response
 from .models import Answer
 from .serializers import AnswerSerializer
@@ -58,6 +59,18 @@ class AnswerViewSet(viewsets.ModelViewSet):
         )
 
         return Response({'message': 'Answer accepted!'})
+
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        if instance.author != request.user:
+            raise PermissionDenied('You are not allowed to edit this Answer.')
+        return super().update(request, *args, **kwargs)
+
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        if instance.author != request.user:
+            raise PermissionDenied('You are not allowed to delete this Answer.')
+        return super().destroy(request, *args, **kwargs)
 
     @action(detail=True, methods=['post'])
     def upvote(self, request, pk=None):
