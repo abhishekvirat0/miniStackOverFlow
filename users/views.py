@@ -39,15 +39,15 @@ def loginview(request):
         response = requests.post(token_url, data=data)
 
         # Log the response status and body
-        logger.debug(f"Token response status: {response.status_code}")
-        logger.debug(f"Token response body: {response.text}")
+        print(f"Token response status: {response.status_code}")
+        print(f"Token response body: {response.text}")
 
         if response.status_code == 200:
             return Response(response.json())
         else:
             return Response({"error": "Invalid credentials or OAuth error"}, status=response.status_code)
     except Exception as e:
-        logger.error(f"Error in token request: {str(e)}", exc_info=True)
+        print(f"Error in token request: {str(e)}", exc_info=True)
         return Response({"error": "Internal server error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
