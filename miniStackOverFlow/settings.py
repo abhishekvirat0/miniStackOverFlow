@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6c!a&+53k11czg+^d@w1s7-*gw71l^18imy056$dd747)%g@$('
 
 # SECURITY WARNING: debug turned off in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*', 'https://ministackoverflow-gdfe.onrender.com', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'https://ministackoverflow-gdfe.onrender.com', 'localhost']
 
 # OAuth2 client credentials
 OAUTH2_CLIENT_ID = "Q0hvMw2Mk7uv5U4q8LMIOiK9Jo7SpJeXuFbXzaUW"

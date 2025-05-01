@@ -41,6 +41,10 @@ class QuestionViewSet(viewsets.ModelViewSet):
         question = self.get_object()
         question.upvotes += 1
         question.save()
+
+        # Increase reputation
+        question.author.reputation += 5
+        question.author.save()
         return Response({'status': 'question up-voted'})
 
     @action(detail=True, methods=['post'])
