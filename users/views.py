@@ -1,11 +1,12 @@
 import requests
+import logging
 from django.conf import settings
 from rest_framework import generics, status, permissions
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from django.contrib.auth import get_user_model
 from users.serializers import UserSerializer
-
+logger = logging.getLogger(__name__)
 User = get_user_model()
 
 
@@ -34,12 +35,20 @@ def loginview(request):
     }
 
     token_url = request.build_absolute_uri('/o/token/')
-    response = requests.post(token_url, data=data)
+    try:
+        response = requests.post(token_url, data=data)
 
-    if response.status_code == 200:
-        return Response(response.json())
-    else:
-        return Response({"error": "Invalid credentials or OAuth error"}, status=response.status_code)
+        # Log the response status and body
+        logger.debug(f"Token response status: {response.status_code}")
+        logger.debug(f"Token response body: {response.text}")
+
+        if response.status_code == 200:
+            return Response(response.json())
+        else:
+            return Response({"error": "Invalid credentials or OAuth error"}, status=response.status_code)
+    except Exception as e:
+        logger.error(f"Error in token request: {str(e)}", exc_info=True)
+        return Response({"error": "Internal server error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 # View own profile
